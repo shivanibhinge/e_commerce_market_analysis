@@ -37,7 +37,7 @@ df_team = pd.DataFrame(team_data)
 st.set_page_config(page_title="The Retail Compass", page_icon="📈", layout="wide")
 
 st.markdown(
-    '<h1 style="color: #D17F43; font-weight: 800; font-size: 5em; font-family: fantasy;">The Retail Compass</h1>',
+    '<h1 style="color: #D17F43; font-weight: 800; font-size: 5em; font-family: arial;">The Retail Compass</h1>',
     unsafe_allow_html=True)
 
 # Create tabs
