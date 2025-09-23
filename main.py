@@ -3,14 +3,14 @@ import pandas as pd
 
 # Define the data for team members
 team_data = {
-    'Name': ['Shivani Bhinge', 'Vinay Chandra Konda', 'Sanika Gidye', 'Shakthi'],
-    'Role': ['Data Lead', 'Visualization, WebDev', 'Modeling Lead', 'Developer'],
-    'Contribution': [
-        'Managed project timelines',
-        'Developed analysis models',
-        'Built the website and analysis',
-        'Handled backend tasks and analysis'
-    ],
+    'Name': ['Shivani Atul Bhinge', 'Vinay Chandra Konda', 'Sanika Gidye', 'Sri Shakthi Aravindan'],
+    'Role': ['Machine Learning Lead', 'Data Lead', 'Visualization Lead', 'Analysis Lead'],
+    # 'Contribution': [
+    #     '',
+    #     'Developed analysis models',
+    #     'Built the website and analysis',
+    #     'Handled backend tasks and analysis'
+    # ],
     'Picture': [
         'https://media.licdn.com/dms/image/v2/D4D03AQEr39coxWKsoA/profile-displayphoto-crop_800_800/B4DZjfup6.HwAM-/0/1756100210989?e=1761177600&v=beta&t=-Yoi2WzXsCJMNxoKK0-cDwVdypoMuZlAYbYiTUaT63k',
         'https://media.licdn.com/dms/image/v2/D5603AQEvP3s_jFmc6A/profile-displayphoto-crop_800_800/B56ZlzwliwIAAI-/0/1758583740907?e=1761177600&v=beta&t=9uia_mxeDh9QYuOwUedEy63roW-bHaWQpV1uUvtgQas',
@@ -49,82 +49,65 @@ with tab1:
 
     with col_left:
         st.header("Introduction")
-        st.markdown(
+        st.info(
             """
-            <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px;">
-                <p style="color: #000000; margin-bottom: 20px;">
-                Welcome to the Retail Stores Analysis project. This initiative aims to provide
-                in-depth insights into retail store performance.
-                Our analysis covers key metrics such as sales trends, customer demographics,
-                and market share to help businesses make data-driven decisions.
-                </p>
-                <p style="color: #000000;">
-                The project utilizes a comprehensive dataset that includes information from
-                retail chains from across different countries such as United States, United Kingdom, and Japan. By examining
-                these different markets, we can identify regional trends and opportunities
-                for growth.
-                </p>
-            </div>
-            <br>
+            Welcome to the Retail Stores Analysis project. This initiative aims to provide
+            in-depth insights into retail store performance.
+            Our analysis covers key metrics such as sales trends, customer demographics,
+            and market share to help businesses make data-driven decisions.
 
-            <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px;">
-            <h4 style="color: #2196F3;">Project Focus</h4>
-            <p style="color: #000000; margin-bottom: 20px;">Customer and Market analysis within the e-commerce sector. The core focus of the research is customer segmentation using RFM (Recency, Frequency, Monetary) analysis and exploratory analysis of the product pricing strategies.</p>
-            <h5 style="color: #2196F3;">Why is it important:</h5>
-            <ul style="list-style-type: none; padding: 0; color: #000000;">
-                <li style="margin-bottom: 5px;">Actionable Business insights: By applying the RFM analysis, the project can help the online retailers to identify and cluster customers based on distinct groups. This data-driven foundation is useful for developing targeted marketing strategies, customer retention, stock analysis eventually adding value to customer experience and overall profitability.</li>
-                <li style="margin-bottom: 5px;">Strategic planning and inventory management: Understanding how product prices are set and how they vary across different years. These insights will help in managing inventory and optimizing companies revenue.</li>
-            </ul>
-            </div>
-            <br>
-
-            <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px;">
-            <h4 style="color: #2196F3;">Stakeholders (Who is Affected?)</h4>
-            <p style="color: #000000;">Which industries, groups, or individuals are impacted by this issue? What are the real-world implications?</p>
-            <ul style="list-style-type: none; padding: 0; color: #000000;">
-                <li style="margin-bottom: 5px;">The Business (the retailer):This is the core stakeholder. Its impacted by sales volume, revenue, profitability, inventory management, and customer retention.</li>
-                <li style="margin-bottom: 5px;">Customers: These are the individuals making purchases. They are affected by product availability, pricing, shipping costs, delivery times, and the quality of customer service.</li>
-                <li style="margin-bottom: 5px;">Suppliers: These are the companies providing the products. Their relationship with the retailer is impacted by purchase orders, payment schedules, and demand for their goods.</li>
-                <li style="margin-bottom: 5px;">Logistics and Shipping Companies: These companies are responsible for delivering goods. Their business is directly tied to the volume and geographical spread of the retailer's sales. The international nature of the sales (e.g., to countries like France, Germany, EIRE, and Norway as seen in the data) highlights the involvement of international logistics partners.</li>
-            </ul>
-            </div>
-            <br>
-
-            <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px;">
-            <h4 style="color: #2196F3;">Existing Solutions & Gaps</h4>
-            <p style="color: #000000;">What solutions currently exist? What limitations or challenges remain?</p>
-            <br>
-            <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid #2196F3;">
-                <h5 style="color: #2196F3;">Paper 1: A Stacking Approach to Customer Lifetime Value (CLV) Prediction</h5>
-                <p style="color: #000000;">Link: <a href="https://arxiv.org/pdf/2308.08502" style="color: #000000;">https://arxiv.org/pdf/2308.08502</a></p>
-                <p style="color: #000000;"><strong>Current Solution:</strong> A two-stage model uses a number of algorithms (Random Forest, XGBoost, ElasticNet) and a final model that combines their predicted values to produce more accurate CLV forecasting.</p>
-                <p style="color: #000000;"><strong>Strengths:</strong> More precise using the ensemble of various models; utilizes a rich feature set instead of RFM alone.</p>
-                <p style="color: #000000;"><strong>Limitations:</strong> Computationally demanding and convoluted; "black box" solution difficult to interpret; requires a lot of data.</p>
-            </div>
-            <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid #2196F3;">
-                <h5 style="color: #2196F3;">Paper 2: Customer-Focused Sales Forecasting Model: RFM-ARIMA Methodology</h5>
-                <p style="color: #000000;">Link: <a href="https://sciendo.com/article/10.2478/bsrj-2022-0003?utm_" style="color: #000000;">https://sciendo.com/article/10.2478/bsrj-2022-0003</a></p>
-                <p style="color: #000000;"><strong>Current Solution:</strong> A combination solution that first uses RFM analysis in customer segmentation and elimination of noise before ARIMA is used on sales data.</p>
-                <p style="color: #000000;"><strong>Strengths:</strong> Maximizes accuracy and model fit by reducing data noise.</p>
-                <p style="color: #000000;"><strong>Limitations:</strong> Restricted for non-linear trend analysis and external factors like seasonality; reliant on large customer buy history data.</p>
-            </div>
-            <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid #2196F3;">
-                <h5 style="color: #2196F3;">Paper 3: Development of a Retailer Forecasting Model Based on Customer Segmentation Using Data Mining Techniques</h5>
-                <p style="color: #000000;">Link: <a href="https://www.ijtsrd.com/computer-science/data-miining/19127/developing-a-forecasting-model-for-retailers-based-on-customer-segmentation-using-data-mining-techniques/kayalvizhi-subramanian?utm_" style="color: #000000;">https://www.ijtsrd.com/computer-science/data-miining/19127/...</a></p>
-                <p style="color: #000000;"><strong>Current Solution:</strong> Two-stage model that groups customers based on demographic and behavior data and forecasts for each group using a forecasting model.</p>
-                <p style="color: #000000;"><strong>Strengths:</strong> Improves inventory performance; is customer-focused; eliminates data redundancy.</p>
-                <p style="color: #000000;"><strong>Limitations:</strong> Can be limited in scope; might be limited to neat, small datasets.</p>
-            </div>
-            <div style="background-color: #ffffff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid #2196F3;">
-                <h5 style="color: #2196F3;">Paper 4: Research on E-Commerce Inventory Sales Forecasting Model Based on ARIMA and LSTM Algorithm</h5>
-                <p style="color: #000000;">Link: <a href="https://www.mdpi.com/2227-7390/13/11/1838?utm_" style="color: #000000;">https://www.mdpi.com/2227-7390/13/11/1838</a></p>
-                <p style="color: #000000;"><strong>Current Solution:</strong> Two-model strategy with ARIMA for monthly inventory forecasting and LSTM for daily sales forecasting.</p>
-                <p style="color: #000000;"><strong>Strengths:</strong> Novel approach that improves accuracy; offers actionable solution for warehouse planning.</p>
-                <p style="color: #000000;"><strong>Weaknesses:</strong> Tested over short time period; LSTMs are prone to overfitting and difficult to interpret; requires large datasets.</p>
-            </div>
-            </div>
+            The project utilizes a comprehensive dataset that includes information from
+            retail chains from across different countries such as United States, United Kingdom, and Japan. By examining
+            these different markets, we can identify regional trends and opportunities
+            for growth.
             """
-            , unsafe_allow_html=True)
+        )
+        st.info(
+            """
+            #### Project Focus
+            Customer and Market analysis within the e-commerce sector. The core focus of the research is customer segmentation using RFM (Recency, Frequency, Monetary) analysis and exploratory analysis of the product pricing strategies.
+
+            ##### Why is it important:
+            * **Actionable Business insights:** By applying the RFM analysis, the project can help the online retailers to identify and cluster customers based on distinct groups. This data-driven foundation is useful for developing targeted marketing strategies, customer retention, stock analysis eventually adding value to customer experience and overall profitability.
+            * **Strategic planning and inventory management:** Understanding how product prices are set and how they vary across different years. These insights will help in managing inventory and optimizing companies revenue.
+            """
+        )
+        st.info(
+            """
+            #### Stakeholders (Who is Affected?)
+            Which industries, groups, or individuals are impacted by this issue? What are the real-world implications?
+            * **The Business (the retailer):** This is the core stakeholder. Its impacted by sales volume, revenue, profitability, inventory management, and customer retention.
+            * **Customers:** These are the individuals making purchases. They are affected by product availability, pricing, shipping costs, delivery times, and the quality of customer service.
+            * **Suppliers:** These are the companies providing the products. Their relationship with the retailer is impacted by purchase orders, payment schedules, and demand for their goods.
+            * **Logistics and Shipping Companies:** These companies are responsible for delivering goods. Their business is directly tied to the volume and geographical spread of the retailer's sales. The international nature of the sales (e.g., to countries like France, Germany, EIRE, and Norway as seen in the data) highlights the involvement of international logistics partners.
+            """
+        )
+        st.info(
+            """
+            #### Existing Solutions & Gaps
+            What solutions currently exist? What limitations or challenges remain?
+
+            **Paper 1: A Stacking Approach to Customer Lifetime Value (CLV) Prediction**
+            * **Current Solution:** A two-stage model uses a number of algorithms (Random Forest, XGBoost, ElasticNet) and a final model that combines their predicted values to produce more accurate CLV forecasting.
+            * **Strengths:** More precise using the ensemble of various models; utilizes a rich feature set instead of RFM alone.
+            * **Limitations:** Computationally demanding and convoluted; "black box" solution difficult to interpret; requires a lot of data.
+
+            **Paper 2: Customer-Focused Sales Forecasting Model: RFM-ARIMA Methodology**
+            * **Current Solution:** A combination solution that first uses RFM analysis in customer segmentation and elimination of noise before ARIMA is used on sales data.
+            * **Strengths:** Maximizes accuracy and model fit by reducing data noise.
+            * **Limitations:** Restricted for non-linear trend analysis and external factors like seasonality; reliant on large customer buy history data.
+
+            **Paper 3: Development of a Retailer Forecasting Model Based on Customer Segmentation Using Data Mining Techniques**
+            * **Current Solution:** Two-stage model that groups customers based on demographic and behavior data and forecasts for each group using a forecasting model.
+            * **Strengths:** Improves inventory performance; is customer-focused; eliminates data redundancy.
+            * **Limitations:** Can be limited in scope; might be limited to neat, small datasets.
+
+            **Paper 4: Research on E-Commerce Inventory Sales Forecasting Model Based on ARIMA and LSTM Algorithm**
+            * **Current Solution:** Two-model strategy with ARIMA for monthly inventory forecasting and LSTM for daily sales forecasting.
+            * **Strengths:** Novel approach that improves accuracy; offers actionable solution for warehouse planning.
+            * **Weaknesses:** Tested over short time period; LSTMs are prone to overfitting and difficult to interpret; requires large datasets.
+            """
+        )
 
     with col_right:
         st.header("")
@@ -133,7 +116,42 @@ with tab1:
             use_container_width=True)
         st.image("https://www.gofrugal.com/sites/blog/files/gofrugal/benefits-retail-analytics.jpg",
                  use_container_width=True)
-        # st.image("", use_container_width=True)
+
+    st.markdown("---")
+
+    st.subheader("The Blueprint")
+    col_img, col_content = st.columns([1, 1])
+
+    with col_img:
+        st.image(
+            "blueprint.jpeg",
+            caption="Data-Driven Decisions",
+            use_container_width=True)
+
+    with col_content:
+        st.info(
+            """
+            #### 1. Data Analysis and Preprocessing
+            * **Data Cleaning:** Handle missing values, especially for CustomerID, and deal with negative quantities and prices.
+            * **Feature Engineering:** Create new variables from the raw data, such as TotalSales and time-based features.
+            * **Initial EDA:** Perform basic analysis to understand data distribution and identify overall sales trends.
+
+            #### 2. Core Analysis
+            * **Customer Segmentation:** Apply RFM analysis to group customers into distinct segments.
+            * **Sales Forecasting:** Use a time-series model to predict future sales trends.
+            * **Demand Forecasting:** Predict future demand for specific products.
+            * **Price Optimization:** Analyze the relationship between UnitPrice and Quantity sold.
+            * **Market Basket Analysis:** Identify common product associations for cross-selling.
+            * **Geographical Trends:** Understand how sales and product popularity vary by country.
+            * **Anomaly Detection:** Identify unusual transactions that may be fraudulent or data errors.
+
+            #### 3. Project Impact
+            * **Business Benefits:** The project provides insights for smarter decision-making, revenue growth, and reduced losses.
+            * **Customer Benefits:** Customers gain a more customized experience with better product availability and relevant recommendations.
+            * **Supply Chain Benefits:** Operations teams can improve planning, reduce waste, and balance logistics.
+            * **Research Benefits:** The project serves as a real-world application for data science methods and offers new research directions.
+            """
+        )
 
 # --- Team Tab ---
 with tab2:
@@ -149,7 +167,6 @@ with tab2:
                 <h4 style="color: #2196F3; margin-bottom: 10px;">{df_team.loc[0, 'Name']}</h4>
                 <img src="{df_team.loc[0, 'Picture']}" style="width: 150px; border-radius: 50%; margin-bottom: 10px;">
                 <p style="font-size: 16px; margin-bottom: 5px; color: #000000;"><strong>Role :</strong> {df_team.loc[0, 'Role']}</p>
-                <p style="font-size: 16px; margin-bottom: 15px; color: #000000;"><strong>Contribution :</strong> {df_team.loc[0, 'Contribution']}</p>
                 <a href="{df_team.loc[0, 'LinkedIn']}" style="background-color: #0077B5; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none; margin-right: 10px;">LinkedIn</a>
                 <a href="{df_team.loc[0, 'GitHub']}" style="background-color: #554444; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none;">GitHub</a>
             </div>
@@ -163,7 +180,6 @@ with tab2:
                 <h4 style="color: #2196F3; margin-bottom: 10px;">{df_team.loc[1, 'Name']}</h4>
                 <img src="{df_team.loc[1, 'Picture']}" style="width: 150px; border-radius: 50%; margin-bottom: 10px;">
                 <p style="font-size: 16px; margin-bottom: 5px; color: #000000;"><strong>Role :</strong> {df_team.loc[1, 'Role']}</p>
-                <p style="font-size: 16px; margin-bottom: 15px; color: #000000;"><strong>Contribution :</strong> {df_team.loc[1, 'Contribution']}</p>
                 <a href="{df_team.loc[1, 'LinkedIn']}" style="background-color: #0077B5; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none; margin-right: 10px;">LinkedIn</a>
                 <a href="{df_team.loc[1, 'GitHub']}" style="background-color: #554444; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none;">GitHub</a>
             </div>
@@ -177,7 +193,6 @@ with tab2:
                 <h4 style="color: #2196F3; margin-bottom: 10px;">{df_team.loc[2, 'Name']}</h4>
                 <img src="{df_team.loc[2, 'Picture']}" style="width: 150px; border-radius: 50%; margin-bottom: 10px;">
                 <p style="font-size: 16px; margin-bottom: 5px; color: #000000;"><strong>Role :</strong> {df_team.loc[2, 'Role']}</p>
-                <p style="font-size: 16px; margin-bottom: 15px; color: #000000;"><strong>Contribution :</strong> {df_team.loc[2, 'Contribution']}</p>
                 <a href="{df_team.loc[2, 'LinkedIn']}" style="background-color: #0077B5; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none; margin-right: 10px;">LinkedIn</a>
                 <a href="{df_team.loc[2, 'GitHub']}" style="background-color: #554444; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none;">GitHub</a>
             </div>
@@ -191,7 +206,6 @@ with tab2:
                 <h4 style="color: #2196F3; margin-bottom: 10px;">{df_team.loc[3, 'Name']}</h4>
                 <img src="{df_team.loc[3, 'Picture']}" style="width: 150px; border-radius: 50%; margin-bottom: 10px;">
                 <p style="font-size: 16px; margin-bottom: 5px; color: #000000;"><strong>Role :</strong> {df_team.loc[3, 'Role']}</p>
-                <p style="font-size: 16px; margin-bottom: 15px; color: #000000;"><strong>Contribution :</strong> {df_team.loc[3, 'Contribution']}</p>
                 <a href="{df_team.loc[3, 'LinkedIn']}" style="background-color: #0077B5; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none; margin-right: 10px;">LinkedIn</a>
                 <a href="{df_team.loc[3, 'GitHub']}" style="background-color: #554444; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none;">GitHub</a>
             </div>
@@ -205,7 +219,7 @@ with tab3:
     st.markdown(
         """
         # Retail Stores Analysis Research Questions
- 
+
         <br>
         <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px;">
         <h3 style="color: #2196F3;">1. Customer-Centric Analysis</h3>
@@ -216,7 +230,7 @@ with tab3:
         </ul>
         </div>
         <br>
- 
+
         <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px;">
         <h3 style="color: #2196F3;">2. Sales and Inventory Management</h3>
         <ul style="list-style-type: none; padding: 0;">
@@ -226,7 +240,7 @@ with tab3:
         </ul>
         </div>
         <br>
- 
+
         <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px;">
         <h3 style="color: #2196F3;">3. Product and Transaction Analysis</h3>
         <ul style="list-style-type: none; padding: 0;">
@@ -244,7 +258,7 @@ with tab3:
     st.markdown(
         """
         ### Who Benefits from this Research?
- 
+
         <br>
         <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
         <h4 style="color: #2196F3;">Businesses / Retailers</h4>
@@ -255,7 +269,7 @@ with tab3:
             <li style="margin-bottom: 5px;">Strategic Pricing: Competitive prices and optimal profit can be determined using models.</li>
         </ul>
         </div>
- 
+
         <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
         <h4 style="color: #2196F3;">Customers</h4>
         <ul style="list-style-type: none; padding: 0; color: #000000;">
@@ -264,7 +278,7 @@ with tab3:
             <li style="margin-bottom: 5px;">Cost Savings: Reducing waste through stock management can be a key driver in ensuring competitive prices.</li>
         </ul>
         </div>
- 
+
         <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
         <h4 style="color: #2196F3;">Supply Chain & Operations Teams</h4>
         <ul style="list-style-type: none; padding: 0; color: #000000;">
@@ -273,7 +287,7 @@ with tab3:
             <li style="margin-bottom: 5px;">Balanced Logistics: Forecasting avoids bottlenecks during peak season.</li>
         </ul>
         </div>
- 
+
         <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px;">
         <h4 style="color: #2196F3;">Researchers / Data Scientists</h4>
         <ul style="list-style-type: none; padding: 0; color: #000000;">
@@ -282,7 +296,7 @@ with tab3:
             <li style="margin-bottom: 5px;">Benchmark Datasets: Models developed in this domain can be applied to other domains like healthcare, finance, or manufacturing.</li>
         </ul>
         </div>
- 
+
         """,
         unsafe_allow_html=True
     )
