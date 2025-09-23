@@ -27,7 +27,7 @@ team_data = {
         'https://github.com/shivanibhinge',
         'https://github.com/Vinay-15',
         'https://github.com/sanikagidye',
-        'https://github.com/shakthi'
+        'https://github.com/Srishakthi77'
     ]
 }
 
