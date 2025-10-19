@@ -13,7 +13,7 @@ team_data = {
     # ],
     'Picture': [
         'https://media.licdn.com/dms/image/v2/D4D03AQEr39coxWKsoA/profile-displayphoto-crop_800_800/B4DZjfup6.HwAM-/0/1756100210989?e=1761177600&v=beta&t=-Yoi2WzXsCJMNxoKK0-cDwVdypoMuZlAYbYiTUaT63k',
-        'https://media.licdn.com/dms/image/v2/D5603AQEvP3s_jFmc6A/profile-displayphoto-crop_800_800/B56ZlzwliwIAAI-/0/1758583740907?e=1761177600&v=beta&t=9uia_mxeDh9QYuOwUedEy63roW-bHaWQpV1uUvtgQas',
+        'https://media.licdn.com/dms/image/v2/D5603AQGbbo-WEFmKNg/profile-displayphoto-crop_800_800/B56Znv5zNHHIAM-/0/1760666530996?e=1762387200&v=beta&t=LGNxCtoaZNilhqiaKsvAOaPmXP74flOCi78cNSjb91w',
         'https://media.licdn.com/dms/image/v2/D4D03AQGAbti5YEFCRg/profile-displayphoto-shrink_800_800/B4DZeTS4gwGUAc-/0/1750522891490?e=1761177600&v=beta&t=jEt5MuZNDty7R0IA23erpcsZ6wExVzKsucOO3uqiqzg',
         'https://media.licdn.com/dms/image/v2/D5635AQFJBK7NRwLpzw/profile-framedphoto-shrink_800_800/B56ZkHUjm2HUAg-/0/1756764453599?e=1759186800&v=beta&t=bVhV6Y6LzfG2y9GXKA1ev1QXGSv-XYfnzYBnNpJlnY0'
     ],
@@ -41,7 +41,7 @@ st.markdown(
     unsafe_allow_html=True)
 
 # Create tabs
-tab1, tab2, tab3 = st.tabs(["Introduction", "Team", "Overview"])
+tab1, tab2, tab3, tab4 = st.tabs(["Introduction", "Team", "Overview", "Data Exploration"])
 
 # --- Introduction Tab ---
 with tab1:
@@ -299,4 +299,215 @@ with tab3:
 
         """,
         unsafe_allow_html=True
+    )
+
+# ---- Data Exploration Tab ----
+with tab4:
+    st.header("🧭 Data Exploration")
+    st.info("""
+    #### 1. Data Collection
+    The dataset was obtained from **online retail store transactions** recorded between 2010 and 2011.  
+    It includes **over 500,000 transactions** from multiple countries including the **United Kingdom, France, Germany, Norway, and Japan**.  
+    Each record contains key details such as:
+    - Invoice number and date  
+    - Product description  
+    - Quantity sold  
+    - Unit price  
+    - Customer ID and country  
+
+    The dataset serves as a rich source for exploring customer purchasing behavior and global sales trends.
+    """)
+
+    st.info("""
+    #### 2. Data Cleaning
+    The dataset initially contained missing values, duplicates, and negative quantities.  
+    We performed several cleaning steps to ensure the integrity of our analysis:
+    - Removed transactions with **missing Customer IDs**  
+    - Excluded **negative quantities or prices** (which usually indicate returns or errors)  
+    - Removed **duplicate entries**  
+    - Converted columns such as `InvoiceDate` to proper datetime format  
+    - Created a new feature **`TotalSales = Quantity × UnitPrice`**  
+    """)
+
+    st.info("""
+    #### 3. Exploratory Data Analysis (EDA)
+    We conducted an in-depth exploration to understand sales patterns, customer segments, and market dynamics.  
+    Key observations included:
+    - **Sales distribution:** The majority of sales originated from the **United Kingdom**, followed by **Netherlands** and **EIRE**.  
+    - **Top-selling products:** Items like decorative lights and gift sets appeared frequently across invoices.  
+    - **Customer activity:** A small percentage of customers contributed to a majority of revenue — consistent with the Pareto principle (80/20 rule).  
+    - **Time trends:** Clear seasonality effects were observed, especially during the holiday months.  
+    """)
+
+    st.info("""
+    #### 4. Feature Engineering
+    To prepare for modeling and segmentation:
+    - Extracted **year, month, and day** from `InvoiceDate`  
+    - Aggregated sales per customer to compute **Recency, Frequency, and Monetary (RFM)** metrics  
+    - Identified **top-selling countries and products**  
+    - Created derived metrics such as **average basket size** and **average order value**
+    """)
+
+    st.info("""
+    #### 5. Insights and Patterns
+    - The **UK market** dominated both sales and customer volume.  
+    - Seasonal spikes suggested strong **holiday-driven purchase trends**.  
+    - Many customers made **one-time purchases**, but a few frequent buyers accounted for significant revenue.  
+    - The cleaned and engineered data provided a strong foundation for segmentation, forecasting, and price optimization in later stages.
+    """)
+
+    #st.success("""
+    #The data exploration process played a crucial role in shaping our analytical direction and building accurate models.
+    #""")'''
+
+    st.header("📈 Visualizations")
+    st.write("Below are key visualizations created during the data exploration phase to better understand sales patterns, customer behavior, and regional performance.")
+
+    # --- Global Styling for Visualization Blocks ---
+    st.markdown("""
+        <style>
+            .viz-block {
+                display: flex;
+                align-items: center;
+                gap: 3px;
+                background-color: #1E2D41;
+                padding: 3px;
+                border-radius: 3px;
+                margin-bottom: 3px;
+            }
+            .viz-text {
+                color: white;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # --- Visualization Block Template ---
+    def visualization_block(image_path, caption, title, description):
+        with st.container():
+            st.markdown('<div class="viz-block">', unsafe_allow_html=True)
+            col1, col2 = st.columns([1.3, 2])
+            with col1:
+                st.image(image_path, caption=caption, use_container_width=True)
+            with col2:
+                st.subheader(title)
+                st.markdown(f'<div class="viz-text">{description}</div>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+
+    # --- Visualization Blocks ---
+
+    visualization_block(
+        "img1.jpeg",
+        "Top 10 Best Selling Products",
+        "Top 10 Best Selling Products",
+        """
+        This visualization highlights the top 10 best selling products across the dataset.<br>
+        The bar chart confirms the dominance of the top product ( Stock Code 84077 corresponding to WORLD WAR 2 GLIDERS ASSTD DESIGNS ), which accounts for almost 1% of total quantity among these items.<br>
+        The analysis reveals that decorative items, gift sets, and seasonal products consistently rank among the top-selling categories, driving peak sales periods during holiday seasons
+        """
+    )
+
+    visualization_block(
+        "img2.jpeg",
+        "Distribution of Log-Transformed Positive Total Sales",
+        "Distribution of Log-Transformed Positive Total Sales",
+        """
+        This histogram illustrates the frequency distribution of positive total sales after a log-transformation.<br>
+        The transformation reduces the extreme right-skew in raw sales data, producing a nearly normal shape with a slight left-skew.<br>
+        The highest concentration of transactions occurs near a log-sales value of 2.5, indicating a stable sales frequency within that range.
+        """
+    )
+
+    visualization_block(
+        "img3.jpeg",
+        "Box Plot of Transaction Price (Capped at 99th Percentile)",
+        "Box Plot of Transaction Price (Capped at 99th Percentile)",
+        """
+        This box plot shows the distribution of unit prices, capped at the 99th percentile.<br>
+        Most products are low-cost, with an IQR between $1.25 and $4.25, and a median around $2.50.<br>
+        The presence of long right tails indicates higher-priced outliers (up to $17.50), though they represent only a small share of transactions.
+        """
+    )
+
+    visualization_block(
+        "img4.jpeg",
+        "Monthly Revenue over Time",
+        "Monthly Revenue over Time",
+        """
+        The revenue trend reveals substantial growth and volatility between 2009 and 2011.<br>
+        - Peak: November 2011 (~$1.45M) marks the highest revenue month.<br>
+        - Trough: December 2011 sees a sharp decline immediately after the peak.<br>        
+        - Pattern: Mid-2010 dips are followed by strong recovery, indicating seasonality and cyclical demand.
+        """
+    )
+
+    visualization_block(
+        "img5.jpeg",
+        "Total Sales by Day of the Week",
+        "Total Sales by Day of the Week",
+        """
+        Sales show a clear weekly pattern, peaking mid-week and dropping sharply on weekends.<br>
+        - Peak: Tuesday and Thursday exceed 4 million in total sales. <br>
+        - Low: Saturday records nearly $0, suggesting store closure or unlogged transactions.<br>
+        - Trend: Sunday and Friday show lower activity, confirming weekend business slowdown.
+        """
+    )
+
+    visualization_block(
+        "img6.jpeg",
+        "Proportion of Total Invoices by Type",
+        "Proportion of Total Invoices by Type",
+        """
+        - This donut chart illustrates the breakdown of all invoices into two categories: sales and returns.<br>
+        - Key Insight: The vast majority of transactions (83.2%) are Sales Invoices.<br> 
+        - A significant portion, 16.8%, are Cancellation/Return Invoices.<br>
+        - This suggests that roughly one in every six invoices is a return or cancellation, a metric that may warrant further investigation into return rates and their causes.
+        """
+    )
+
+    visualization_block(
+        "img7.jpeg",
+        "Top 10 Best Selling Products (Treemap)",
+        "Top 10 Best Selling Products (Treemap)",
+        """
+        The top-selling products, measured by Total Quantity Sold, are dominated by a few items and top 3 products are:<br>
+        WORLD WAR 2 GLIDERS ASSTD DESIGNS<br>
+        ASSORTED COLOUR BIRD ORNAMENT<br>
+        JUMBO BAG RED RETROSPOT
+        """
+    )
+
+    visualization_block(
+        "img8.jpeg",
+        "Top 5 StockCodes Contribution to Total Sales",
+        "Top 5 StockCodes Contribution to Total Sales",
+        """
+        - This pie chart depicts how much revenue the top 5 StockCodes contribute compared to all others.<br>
+        - These products account for only 6.9% of total revenue<br>
+        - Meaning 93.1 percent of sales come from a diverse range of items, confirming strong product variety and a non-reliant sales structure.
+        """
+    )
+
+    visualization_block(
+        "img9.jpeg",
+        "Scatter Plot of Quantity vs. Price (Capped at 99th Percentile)",
+        "Scatter Plot of Quantity vs. Price (Capped at 99th Percentile)",
+        """
+        This scatter plot shows the relationship between quantity sold and unit price.<br>
+        - High density at low prices (<$5) and small quantities (<20).<br>
+        - Slight inverse relationship: higher prices → lower quantities sold.<br>  
+        - Repetitive lines indicate standard batch sizes (12, 24, 48) and fixed price points.
+        """
+    )
+
+    visualization_block(
+        "img10.jpeg",
+        "QQ Plot of Log-Transformed Positive Total Sales",
+        "QQ Plot of Log-Transformed Positive Total Sales",
+        """
+        This QQ plot tests the normality of log-transformed sales data.<br>
+        - Most data points align with the red theoretical line, confirming near-normal distribution in the center.<br>
+        - The S-shaped deviation at the tails suggests leptokurtic behavior with more extreme highs and lows than expected in a perfect normal distribution.
+        """
     )
