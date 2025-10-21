@@ -385,6 +385,25 @@ with tab4:
 
     # --- Visualization Block Template ---
     def visualization_block(image_path, caption, title, description):
+    # Inject adaptive CSS styles for both light and dark themes
+        st.markdown("""
+            <style>
+            .viz-block {
+                border-radius: 12px;
+                padding: 16px;
+                background-color: var(--background-color);
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                margin-bottom: 20px;
+            }
+            .viz-text {
+                color: var(--text-color);
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+
+        # Layout
         with st.container():
             st.markdown('<div class="viz-block">', unsafe_allow_html=True)
             col1, col2 = st.columns([1.3, 2])
