@@ -3,19 +3,49 @@ import pandas as pd
 
 # Define the data for team members
 team_data = {
-    'Name': ['Shivani Atul Bhinge', 'Vinay Chandra Konda', 'Sanika Gidye', 'Sri Shakthi Aravindan'],
-    'Role': ['Machine Learning Lead', 'Data Lead', 'Visualization Lead', 'Analysis Lead'],
-    # 'Contribution': [
-    #     '',
-    #     'Developed analysis models',
-    #     'Built the website and analysis',
-    #     'Handled backend tasks and analysis'
-    # ],
+    'Name': [
+        'Shivani Atul Bhinge',
+        'Vinay Chandra Konda',
+        'Sanika Gidye',
+        'Sri Shakthi Aravindan'
+    ],
+    'Role': [
+        'Machine Learning Lead',
+        'Data Lead',
+        'Visualization Lead',
+        'Analysis Lead'
+    ],
+    'Contribution': [
+        """Shivani led the Machine Learning workflows of the project. 
+        She implemented Regression models (Linear Regression, Random Forest Regression) 
+        and Clustering models (K-Means). She was responsible for hyperparameter tuning, 
+        model evaluation, performance metrics, and ensuring model reproducibility. 
+        She also contributed to validating assumptions for regression and preparing 
+        ML-ready datasets.""",
+
+        """Vinay handled Data Engineering tasks and built the Apriori Association Rule–Mining 
+        Module. He prepared the dataset for transactional analysis, performed data cleaning, 
+        converted invoices into a basket format, and implemented Apriori to extract 
+        meaningful patterns such as item co-occurrences and support–confidence–lift metrics. 
+        He also assisted in backend integration and ensuring the algorithms run efficiently.""",
+
+        """Sanika developed the Decision Tree Classification module and contributed heavily 
+        to the UI visualization components. She worked on model training, feature encoding, 
+        managing class imbalance, and presenting interpretability outputs like feature 
+        importance and tree-structure logic. She also designed dashboards and supported 
+        the website layout and user-friendly visuals.""",
+
+        """Shakthi handled the Exploratory Data Analysis (EDA) and trend-based insights. 
+        She worked on creating summary statistics, time-series purchase behavior, 
+        country-level purchase patterns, customer segmentation insights, and anomaly detection. 
+        She ensured data cleanliness, removed duplicates, handled missing values, and 
+        prepared charts used across multiple tabs."""
+    ],
     'Picture': [
-        'https://media.licdn.com/dms/image/v2/D4D03AQEr39coxWKsoA/profile-displayphoto-crop_800_800/B4DZjfup6.HwAM-/0/1756100210989?e=1761177600&v=beta&t=-Yoi2WzXsCJMNxoKK0-cDwVdypoMuZlAYbYiTUaT63k',
-        'https://media.licdn.com/dms/image/v2/D5603AQGbbo-WEFmKNg/profile-displayphoto-crop_800_800/B56Znv5zNHHIAM-/0/1760666530996?e=1762387200&v=beta&t=LGNxCtoaZNilhqiaKsvAOaPmXP74flOCi78cNSjb91w',
-        'https://media.licdn.com/dms/image/v2/D4D03AQGAbti5YEFCRg/profile-displayphoto-shrink_800_800/B4DZeTS4gwGUAc-/0/1750522891490?e=1761177600&v=beta&t=jEt5MuZNDty7R0IA23erpcsZ6wExVzKsucOO3uqiqzg',
-        'https://media.licdn.com/dms/image/v2/D5635AQFJBK7NRwLpzw/profile-framedphoto-shrink_800_800/B56ZkHUjm2HUAg-/0/1756764453599?e=1759186800&v=beta&t=bVhV6Y6LzfG2y9GXKA1ev1QXGSv-XYfnzYBnNpJlnY0'
+        'https://media.licdn.com/dms/image/v2/D4D03AQEr39coxWKsoA/profile-displayphoto-crop_800_800/B4DZjfup6.HwAM-/0/1756100210989?e=1765411200&v=beta&t=twZ4t-BsBMHAsWog26neYbxX8YmnS9R6TP5ajDlFppk',
+        'https://media.licdn.com/dms/image/v2/D5603AQGn1ZzMYtggOw/profile-displayphoto-crop_800_800/B56ZqqOirdJQAI-/0/1763792530611?e=1765411200&v=beta&t=WAP2r5oifTtASVhMRZomxVD9wHG_xcnwMw_cOBlQV4E',
+        'https://media.licdn.com/dms/image/v2/D4D03AQGAbti5YEFCRg/profile-displayphoto-shrink_800_800/B4DZeTS4gwGUAc-/0/1750522891490?e=1765411200&v=beta&t=3xVxnqnoDPfwthz6bRmwdKwRXi-Yz3Zal3od7bwlDQ8',
+        'https://media.licdn.com/dms/image/v2/D5603AQH0ju7cHjZGiw/profile-displayphoto-crop_800_800/B56ZpsSUvmH8AM-/0/1762753335349?e=1765411200&v=beta&t=coMrefTy0-ob4HptrTiAMZz5qTWo65hkSqdftNQwnUI'
     ],
     'LinkedIn': [
         'https://www.linkedin.com/in/shivani-bhinge/',
@@ -31,6 +61,7 @@ team_data = {
     ]
 }
 
+
 # Create a DataFrame
 df_team = pd.DataFrame(team_data)
 
@@ -41,7 +72,9 @@ st.markdown(
     unsafe_allow_html=True)
 
 # Create tabs
-tab1, tab2, tab3, tab4 = st.tabs(["Introduction", "Team", "Overview", "Data Exploration"])
+#tab1, tab2, tab3, tab4 = st.tabs(["Introduction", "Team", "Overview", "Data Exploration"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Introduction", "Team", "Overview", "Data Exploration", "Model Evaluation"])
+
 
 # --- Introduction Tab ---
 with tab1:
@@ -112,7 +145,7 @@ with tab1:
     with col_right:
         st.header("")
         st.image(
-            "https://trueprofit.io/_next/image?url=https%3A%2F%2Fbe.trueprofit.io%2Fuploads%2Fretail-store-profitability-analysis.webp&w=2560&q=75",
+            "https://be.trueprofit.io/uploads/retail-store-profitability-analysis.webp",
             use_container_width=True)
         st.image("https://www.gofrugal.com/sites/blog/files/gofrugal/benefits-retail-analytics.jpg",
                  use_container_width=True)
@@ -158,60 +191,23 @@ with tab2:
     st.header("Who We are")
     st.write("Meet the talented individuals behind this project.")
 
-    col1, col2, col3, col4 = st.columns(4)
+    # 2 profiles per row
+    for i in range(0, len(team_data['Name']), 2):
+        cols = st.columns(2)
 
-    with col1:
-        st.markdown(
-            f"""
-            <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px; text-align: center;">
-                <h4 style="color: #2196F3; margin-bottom: 10px;">{df_team.loc[0, 'Name']}</h4>
-                <img src="{df_team.loc[0, 'Picture']}" style="width: 150px; border-radius: 50%; margin-bottom: 10px;">
-                <p style="font-size: 16px; margin-bottom: 5px; color: #000000;"><strong>Role :</strong> {df_team.loc[0, 'Role']}</p>
-                <a href="{df_team.loc[0, 'LinkedIn']}" style="background-color: #0077B5; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none; margin-right: 10px;">LinkedIn</a>
-                <a href="{df_team.loc[0, 'GitHub']}" style="background-color: #554444; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none;">GitHub</a>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-    with col2:
-        st.markdown(
-            f"""
-            <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px; text-align: center;">
-                <h4 style="color: #2196F3; margin-bottom: 10px;">{df_team.loc[1, 'Name']}</h4>
-                <img src="{df_team.loc[1, 'Picture']}" style="width: 150px; border-radius: 50%; margin-bottom: 10px;">
-                <p style="font-size: 16px; margin-bottom: 5px; color: #000000;"><strong>Role :</strong> {df_team.loc[1, 'Role']}</p>
-                <a href="{df_team.loc[1, 'LinkedIn']}" style="background-color: #0077B5; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none; margin-right: 10px;">LinkedIn</a>
-                <a href="{df_team.loc[1, 'GitHub']}" style="background-color: #554444; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none;">GitHub</a>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-    with col3:
-        st.markdown(
-            f"""
-            <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px; text-align: center;">
-                <h4 style="color: #2196F3; margin-bottom: 10px;">{df_team.loc[2, 'Name']}</h4>
-                <img src="{df_team.loc[2, 'Picture']}" style="width: 150px; border-radius: 50%; margin-bottom: 10px;">
-                <p style="font-size: 16px; margin-bottom: 5px; color: #000000;"><strong>Role :</strong> {df_team.loc[2, 'Role']}</p>
-                <a href="{df_team.loc[2, 'LinkedIn']}" style="background-color: #0077B5; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none; margin-right: 10px;">LinkedIn</a>
-                <a href="{df_team.loc[2, 'GitHub']}" style="background-color: #554444; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none;">GitHub</a>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-    with col4:
-        st.markdown(
-            f"""
-            <div style="background-color: #e6f7ff; padding: 20px; border-radius: 10px; text-align: center;">
-                <h4 style="color: #2196F3; margin-bottom: 10px;">{df_team.loc[3, 'Name']}</h4>
-                <img src="{df_team.loc[3, 'Picture']}" style="width: 150px; border-radius: 50%; margin-bottom: 10px;">
-                <p style="font-size: 16px; margin-bottom: 5px; color: #000000;"><strong>Role :</strong> {df_team.loc[3, 'Role']}</p>
-                <a href="{df_team.loc[3, 'LinkedIn']}" style="background-color: #0077B5; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none; margin-right: 10px;">LinkedIn</a>
-                <a href="{df_team.loc[3, 'GitHub']}" style="background-color: #554444; color: #ffffff; padding: 8px 12px; border-radius: 5px; text-decoration: none;">GitHub</a>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        for col, idx in zip(cols, range(i, min(i + 2, len(team_data['Name'])))):
+            with col:
+                st.image(team_data['Picture'][idx], width=200)
+                st.subheader(team_data['Name'][idx])
+                st.write(f"**{team_data['Role'][idx]}**")
+                st.write(team_data['Contribution'][idx])
+                st.markdown(
+                    f"""
+                    🔗 [LinkedIn]({team_data['LinkedIn'][idx]})  
+                    💻 [GitHub]({team_data['GitHub'][idx]})
+                    """
+                )
+
 
 # --- Project Overview Tab ---
 with tab3:
@@ -530,3 +526,127 @@ with tab4:
         - The S-shaped deviation at the tails suggests leptokurtic behavior with more extreme highs and lows than expected in a perfect normal distribution.
         """
     )
+
+import streamlit as st
+import pandas as pd
+
+with tab5:
+    st.header("🧭 Model Evaluation")
+    st.write("Below we summarize the performance and insights of the different models applied in this project.")
+
+    # ------------------ K-Means Clustering ------------------
+    st.subheader("1️⃣ K-Means Clustering")
+    st.write("""
+    **Purpose:** Cluster customers based on historical behavior to predict **Next Purchase Day**.  
+    **Why chosen:** Good for grouping customers with similar patterns, easy to interpret, works well with numeric features.  
+    **Assumptions:** Euclidean distance metric, features are scaled, clusters are convex/spherical.  
+    **Hyperparameter tuning:** Optimized `k` using the Elbow method.  
+    **Challenges & Solutions:** Sensitive to outliers → applied scaling and removed extreme anomalies.
+    """)
+
+    kmeans_metrics_df = pd.DataFrame({
+        "Metric": ["Silhouette Score", "Davies-Bouldin Index", "Inertia (WCSS)"],
+        "Value": [0.62, 0.48, 1200.34]
+    })
+    st.write("#### Evaluation Metrics")
+    st.write(kmeans_metrics_df)
+
+    # ------------------ Random Forest Classifier ------------------
+    st.subheader("2️⃣ Random Forest Classifier")
+    st.write("""
+    **Purpose:** Predict **delivery/response time** or customer segments based on features.  
+    **Why chosen:** Handles non-linear data well, reduces overfitting compared to a single tree, often increases accuracy, F1-score, and ROC-AUC.  
+    **Assumptions:** Features are relevant; model can handle multicollinearity.  
+    **Hyperparameter tuning:** Number of trees (`n_estimators`), maximum depth (`max_depth`).  
+    **Challenges & Solutions:** High-dimensional data → reduced features using feature selection.
+    """)
+
+    rf_metrics_df = pd.DataFrame({
+        "Metric": ["MAE (days)", "MSE", "RMSE (days)", "R²-score"],
+        "Value": [21.43, 686.81, 26.21, 0.88]
+    })
+    st.write("#### Evaluation Metrics")
+    st.write(rf_metrics_df)
+
+    rf_fi_df = pd.DataFrame({
+        "Feature": ["Recency", "Revenue", "Frequency"],
+        "Importance": [0.9750, 0.0128, 0.0122]
+    })
+    st.write("#### Feature Importance")
+    st.write(rf_fi_df)
+
+    # ------------------ Decision Tree Classifier ------------------
+    st.subheader("3️⃣ Decision Tree Classifier")
+    st.write("""
+    **Purpose:** Classify customers into segments using **RFM features**.  
+    **Why chosen:** Interpretable decision rules, handles categorical and numeric data, low preprocessing.  
+    **Assumptions:** No strong assumptions about data distribution.  
+    **Hyperparameter tuning:** `max_depth`, `min_samples_split`, `min_samples_leaf`.  
+    **Challenges & Solutions:** Imbalanced classes → applied class weighting and stratified split.
+    """)
+
+    dt_metrics_df = pd.DataFrame({
+        "Metric": ["Accuracy", "Precision", "Recall", "F1-score", "ROC-AUC"],
+        "Value": [0.88, 0.80, 0.83, 0.81, 0.948]
+    })
+    st.write("#### Evaluation Metrics")
+    st.write(dt_metrics_df)
+
+    st.write("""
+    The Decision Tree model performs efficiently based on **ROC-AUC score of 0.948**, showing the ability to distinguish retained vs non-retained customers.  
+    Although precision for retained customers is lower, the recall is high — the model will successfully identify most customers who are at risk, which is crucial for retention strategies.
+    """)
+
+    # ------------------ Apriori / Frequent Pattern Mining ------------------
+    st.subheader("4️⃣ Apriori Algorithm (Frequent Pattern Mining)")
+    st.write("""
+    **Purpose:** Identify frequent itemsets and associations in retail transactions.  
+    **Why chosen:** Suitable for transactional data, interpretable, helps in cross-selling and promotion strategies.  
+    **Assumptions:** Data is categorical (items purchased), sufficient transaction support exists.  
+    **Hyperparameter tuning:** Minimum support (`min_support`) and confidence thresholds (`min_confidence`).  
+    **Challenges & Solutions:** Large number of itemsets → filtered only top rules with high support and lift.
+    """)
+
+    apriori_rules_df = pd.DataFrame({
+        "Rule": [
+            "(ROSES REGENCY TEACUP AND SAUCER) → (GREEN REGENCY TEACUP AND SAUCER)",
+            "(HEART OF WICKER LARGE) → (HEART OF WICKER SMALL)",
+            "(JUMBO BAG RED RETROSPOT) → (JUMBO BAG PINK POLKADOT)"
+        ],
+        "Support": [0.0365, 0.043, 0.0268],
+        "Confidence": [0.7085, 0.5081, 0.2919],
+        "Lift": [24.51, 11.32, 9.67]
+    })
+    st.write("#### Sample Association Rules")
+    st.write(apriori_rules_df)
+
+    st.write("""
+    In Apriori, a **lift of 10+** indicates very strong relationships between products — showing that certain items are frequently purchased together.  
+    This model can be leveraged to **recommend products to users** based on items they select.
+    """)
+
+    # ------------------ Comparisons Between Models ------------------
+    st.subheader("📊 Comparisons Between Models")
+    st.write("""
+    - **Decision Tree vs Random Forest:**  
+      Random Forest improves upon a single Decision Tree by reducing overfitting, handling non-linear relationships, and often achieving higher Accuracy, F1-score, and ROC-AUC.  
+      Both models are interpretable, but Random Forest provides more robust performance on unseen data.
+
+    - **Classification vs Clustering:**  
+      Classification models (Decision Tree, Random Forest) focus on predicting known labels (e.g., retained vs non-retained customers) using labeled data.  
+      Clustering models (K-Means) identify patterns and group similar customers without prior labels.  
+      Use case depends on business need: prediction vs segmentation.
+
+    - **Classification vs Frequent Pattern Mining:**  
+      Classification helps in targeted retention strategies, while Apriori uncovers cross-selling opportunities.  
+      High recall in the Decision Tree ensures most at-risk customers are identified.  
+      Apriori’s high lift (>10) shows strong item associations, enabling product recommendations.
+
+    - **Key Insight:**  
+      Each model addresses a specific aspect of the dataset:
+        - **K-Means:** Customer segmentation  
+        - **Random Forest:** Robust predictive performance  
+        - **Decision Tree:** Interpretability and retention targeting  
+        - **Apriori:** Market basket insights and product recommendations
+    """)
+
