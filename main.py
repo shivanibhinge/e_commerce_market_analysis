@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from recommender import recommend
 
 # Define the data for team members
 team_data = {
@@ -73,7 +74,7 @@ st.markdown(
 
 # Create tabs
 #tab1, tab2, tab3, tab4 = st.tabs(["Introduction", "Team", "Overview", "Data Exploration"])
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Introduction", "Team", "Overview", "Data Exploration", "Model Evaluation"])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["Introduction", "Team", "Overview", "Data Exploration", "Model Evaluation", "Results & Conslusion","Product Recommender System"])
 
 
 # --- Introduction Tab ---
@@ -211,7 +212,7 @@ with tab2:
 
 # --- Project Overview Tab ---
 with tab3:
-    st.header("Project Overview")
+    st.header("📋 Project Overview")
     st.markdown(
         """
         # Retail Stores Analysis Research Questions
@@ -527,11 +528,9 @@ with tab4:
         """
     )
 
-import streamlit as st
-import pandas as pd
 
 with tab5:
-    st.header("🧭 Model Evaluation")
+    st.header("🔎 Model Evaluation")
     st.write("Below we summarize the performance and insights of the different models applied in this project.")
 
     # ------------------ K-Means Clustering ------------------
@@ -649,4 +648,157 @@ with tab5:
         - **Decision Tree:** Interpretability and retention targeting  
         - **Apriori:** Market basket insights and product recommendations
     """)
+
+    # --- Results Tab ---
+with tab6:
+    st.header("🏆 Results")
+    st.write("Below are the results of each model implemented on our dataset.")
+    st.info("""
+        #### K-Means Clustering (Customer Segmentation & Next Purchase Prediction)
+
+        - Identified clear customer groups such as high-value buyers, occasional shoppers and inactive users.  
+        - The Elbow method and scaling improved the separation of clusters for more reliable segmentation.  
+        - Helps businesses run targeted marketing and predict when a customer is likely to make their next purchase.  
+        - Supports better customer engagement and stronger personalization strategies.
+        """)
+
+    st.info("""
+        #### Random Forest Classifier (Response Time / Segment Prediction)
+
+        - Delivered strong accuracy, recall and F1-score for predicting customer behavior.  
+        - Feature importance revealed key factors such as Monetary value, Frequency and Country.  
+        - Helps in prioritizing influential behavioral features for improved planning and decision-making.  
+        - Useful for predicting customer segments or delivery response times with high reliability.
+        """)
+
+    st.info("""
+        #### Decision Tree Classifier (RFM-Based Customer Classification)
+
+        - Achieved a high ROC-AUC score of 0.948, showing excellent separation of retained vs non-retained customers.  
+        - High recall for at-risk customers ensures early detection for churn-prevention programs.  
+        - Simple if-else rules make the model easy to interpret and apply directly in business workflows.  
+        - A strong tool for understanding how Recency, Frequency and Monetary metrics influence customer retention.
+        """)
+
+    st.info("""
+        #### Apriori Algorithm (Market Basket Analysis)
+
+        - Revealed strong product associations, with many rules showing lift values above 10.  
+        - Helps retailers identify frequently purchased product pairs for bundling and cross-selling.  
+        - Useful for optimizing store layout, running targeted promotions and offering personalized recommendations.  
+        - Enhances understanding of purchasing patterns and product relationships across the catalog.
+        """)
+
+    st.header("📊 Conclusions")
+    st.write("The Retail Stores Analysis project demonstrates how data-driven methods can significantly enhance decision-making across multiple areas of retail operations. By combining segmentation, prediction, classification, and association rule mining, the project delivers insights that are meaningful for several key stakeholders.")
+    st.info("""
+    #### Retail Impact
+
+    - Better customer understanding: The segmentation and churn models help identify high-value customers, at-risk customers and inactive groups.  
+    - Improved sales strategy: Insights from the Apriori model support effective product bundling and targeted promotions.  
+    - Optimized inventory planning: Forecast trends and customer behavior help reduce understocking and overstocking issues.  
+    - Efficient resource allocation: Random Forest and Decision Tree models highlight the most influential behavioral features for better decision-making.  
+    - Higher profitability: Data-driven insights reduce waste, increase retention and improve marketing efficiency.  
+    """)
+
+    st.info("""
+    #### Customer Experience
+
+    - Personalized recommendations: Strong product associations enable more relevant suggestions instead of random recommendations.  
+    - Better product availability: Forecasting and clustering ensure popular items stay in stock.  
+    - Improved shopping experience: Pricing and promotions can be tailored based on purchasing patterns.  
+    """)
+
+    st.info("""
+    #### Supply Chain & Logistics
+
+    - Stronger planning: Demand patterns help teams coordinate better with warehouses and transport partners.  
+    - Reduced waste: Especially helpful for items with expiration constraints or seasonal demand.  
+    - Balanced logistics: Forecasting prevents sudden workload spikes and stockouts during peak seasons.  
+    """)
+
+    st.info("""
+    #### Research & Data Science
+            
+    - Real-world experimentation: This project demonstrates practical use of RFM analysis, classification models, and association rule mining.  
+    - Opportunity for innovation: Future work can involve dynamic segmentation, deep-learning forecasting, or ensemble hybrid models.  
+    - Benchmark dataset: Retail data can be repurposed for similar studies in healthcare, finance, or manufacturing.  
+    """)
+
+    st.info("""
+    #### Final Summary
+
+    This project highlights how combining segmentation, forecasting, classification, and association mining provides a complete understanding of retail behavior.  
+    These insights support better business decisions, improved customer satisfaction, stronger supply chains, and new opportunities for research and innovation.
+    """)
+
+
+    # --- Global Styling for Visualization Blocks ---
+    st.markdown("""
+        <style>
+            .viz-block {
+                display: flex;
+                align-items: center;
+                gap: 3px;
+                background-color: #1E2D41;
+                padding: 3px;
+                border-radius: 3px;
+                margin-bottom: 3px;
+            }
+            .viz-text {
+                color: white;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # --- Visualization Block Template ---
+    def visualization_block(image_path, caption, title, description):
+    # Inject adaptive CSS styles for both light and dark themes
+        st.markdown("""
+            <style>
+            .viz-block {
+                border-radius: 12px;
+                padding: 16px;
+                background-color: var(--background-color);
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                margin-bottom: 20px;
+            }
+            .viz-text {
+                color: var(--text-color);
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+
+        # Layout
+        with st.container():
+            st.markdown('<div class="viz-block">', unsafe_allow_html=True)
+            col1, col2 = st.columns([1.3, 2])
+            with col1:
+                st.image(image_path, caption=caption, use_container_width=True)
+            with col2:
+                st.subheader(title)
+                st.markdown(f'<div class="viz-text">{description}</div>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+
+
+
+
+with tab7:
+    st.header("🪄 Product Recommender System")
+    st.write('''
+             This recommendation system analyzes the item a user selects and predicts other products they are likely to buy based on past purchasing patterns. By learning which items are frequently bought together and how customers behave, the system suggests relevant, complementary products to improve the shopping experience and guide smarter purchasing decisions.
+             ''')
+
+    query = st.text_input("Enter a product keyword (e.g., mug, toy, bag)")
+
+    if st.button("Get Recommendations"):
+        if query.strip() != "":
+            result = recommend(query)
+            st.write(result)
+        else:
+            st.warning("Please enter a product name.")
 
